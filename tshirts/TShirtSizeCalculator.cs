@@ -1,21 +1,27 @@
 namespace TShirtSpace
 {
+    using System;
+
     public class TShirtSizeCalculator
     {
-        public string CalculateSize(int cms)
+        public string CalculateSize(int shoulderMeasurementInCms)
         {
-            if (cms < 38)
+            if (shoulderMeasurementInCms <= 0)
+            {
+                throw new ArgumentException("Shoulder measurement is less than or equal to zero.");
+            }
+
+            if (shoulderMeasurementInCms < 38)
             {
                 return "S";
             }
-            else if (cms > 38 && cms < 42)
+
+            if (shoulderMeasurementInCms < 42)
             {
                 return "M";
             }
-            else
-            {
-                return "L";
-            }
+            
+            return "L";
         }
     }
 }
